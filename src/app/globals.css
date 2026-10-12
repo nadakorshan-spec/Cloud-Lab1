@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-outfit), var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+
+  /* Premium theme colors */
+  --color-brand-primary: #8b5cf6; /* Violet */
+  --color-brand-secondary: #06b6d4; /* Cyan */
+  --color-brand-dark: #030014; /* Deep space black */
+  --color-brand-card: rgba(10, 10, 20, 0.6);
+  --color-brand-border: rgba(255, 255, 255, 0.08);
+  --color-brand-border-hover: rgba(139, 92, 246, 0.4);
+
+  /* Animation keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; filter: blur(40px); }
+    50% { opacity: 0.8; filter: blur(60px); }
+  }
+
+  @keyframes grid-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 40px; }
+  }
+
+  @keyframes border-glow-spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes progress-loading {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+
+  /* Define animation utilities */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 8s ease-in-out infinite;
+  --animate-grid-move: grid-move 20s linear infinite;
+  --animate-spin-slow: border-glow-spin 12s linear infinite;
+}
+
+:root {
+  --background: #030014;
+  --foreground: #f8fafc;
+  --font-geist-sans: "Outfit", sans-serif;
+}
+
+html, body {
+  background-color: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Custom utilities for the premium aesthetic */
+.glassmorphism {
+  background: rgba(10, 9, 24, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glassmorphism-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glassmorphism-hover:hover {
+  background: rgba(15, 14, 35, 0.85);
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.15),
+              0 1px 1px 0 rgba(255, 255, 255, 0.05) inset;
+  transform: translateY(-2px);
+}
+
+/* Premium radial gradient grid background */
+.bg-grid-cyber {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-radial-gradient-overlay {
+  background: radial-gradient(circle at 50% 50%, transparent 20%, #030014 90%);
+}
+
+.bg-glowing-blob-1 {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%);
+}
+
+.bg-glowing-blob-2 {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030014;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Selection style */
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: #ffffff;
+}
+
+/* Custom interactive element styles */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 30%, #a78bfa 70%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple-cyan {
+  background: linear-gradient(135deg, #c084fc 0%, #8b5cf6 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animated Border BorderBeam component-like structure */
+.border-beam-container {
+  position: relative;
+  border-radius: inherit;
+}
+
+.border-beam-container::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  background: linear-gradient(90deg, transparent, #8b5cf6, #06b6d4, transparent);
+  background-size: 200% 100%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: border-beam-flow 4s linear infinite;
+}
+
+@keyframes border-beam-flow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
